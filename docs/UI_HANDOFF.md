@@ -8,12 +8,12 @@ Pratinjau tidak mempunyai login atau otorisasi nyata. Label **Pratinjau UI** dan
 
 ## Peta file saat ini
 
-| File | Yang bisa diubah |
-|---|---|
-| `src/App.vue` | Urutan menu, isi halaman, form, tabel, pesan, validasi dan interaksi lokal |
+| File            | Yang bisa diubah                                                                |
+| --------------- | ------------------------------------------------------------------------------- |
+| `src/App.vue`   | Urutan menu, isi halaman, form, tabel, pesan, validasi dan interaksi lokal      |
 | `src/style.css` | Warna hijau, tipografi, spacing, sidebar, kartu statistik, tabel dan breakpoint |
-| `src/data.js` | Daftar contoh pemilik/kartu, sesi dan transaksi |
-| `src/main.js` | Bootstrap aplikasi Vue |
+| `src/data.js`   | Daftar contoh pemilik/kartu, sesi dan transaksi                                 |
+| `src/main.js`   | Bootstrap aplikasi Vue                                                          |
 
 Saat ini semua halaman sengaja berada di satu `App.vue` agar mudah dibaca pada tahap awal. Folder komponen dan halaman terpisah belum dibuat.
 
@@ -31,13 +31,13 @@ Saat ini semua halaman sengaja berada di satu `App.vue` agar mudah dibaca pada t
 
 Ini saran untuk tahap berikutnya, bukan struktur yang sudah diimplementasikan:
 
-| Fokus | Pekerjaan |
-|---|---|
-| Layout | Pecah sidebar/header ke komponen, rapikan responsif dan aksesibilitas |
-| Kartu & pemilik | Rapikan form, pencarian dan badge status |
-| Top-up & transaksi | Rapikan ringkasan konfirmasi, tabel dan pesan hasil |
-| Parkir & perangkat | Rapikan sesi, mode dan tampilan status contoh |
-| Integrasi UI | Review konsistensi, empty/error state dan uji desktop/HP |
+| Fokus              | Pekerjaan                                                             |
+| ------------------ | --------------------------------------------------------------------- |
+| Layout             | Pecah sidebar/header ke komponen, rapikan responsif dan aksesibilitas |
+| Kartu & pemilik    | Rapikan form, pencarian dan badge status                              |
+| Top-up & transaksi | Rapikan ringkasan konfirmasi, tabel dan pesan hasil                   |
+| Parkir & perangkat | Rapikan sesi, mode dan tampilan status contoh                         |
+| Integrasi UI       | Review konsistensi, empty/error state dan uji desktop/HP              |
 
 Contoh arah refactor yang dapat disepakati bersama:
 

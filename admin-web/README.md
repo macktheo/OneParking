@@ -24,12 +24,12 @@ Semua data ada di memori browser dan kembali ke awal saat reload. Tidak ada fetc
 
 ## File yang dikerjakan
 
-| File | Kegunaan |
-|---|---|
-| `src/App.vue` | Halaman, form, navigasi, dan interaksi contoh |
-| `src/style.css` | Tampilan sederhana, layout laptop dan HP |
-| `src/data.js` | Data kartu, sesi dan transaksi contoh |
-| `src/main.js` | Entry Vue |
+| File            | Kegunaan                                      |
+| --------------- | --------------------------------------------- |
+| `src/App.vue`   | Halaman, form, navigasi, dan interaksi contoh |
+| `src/style.css` | Tampilan sederhana, layout laptop dan HP      |
+| `src/data.js`   | Data kartu, sesi dan transaksi contoh         |
+| `src/main.js`   | Entry Vue                                     |
 
 Untuk mengubah isi data, edit `src/data.js`. Untuk mengubah warna/jarak/layout, edit `src/style.css`. Untuk mengubah form dan halaman, edit `src/App.vue`.
 

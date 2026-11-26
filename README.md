@@ -46,15 +46,15 @@ OneParking/
 
 ## Halaman yang tersedia
 
-| Halaman | Isi |
-|---|---|
-| Ringkasan | Statistik, aktivitas terbaru, mode reader |
-| Kartu & pemilik | Cari/filter, tambah kartu contoh, blokir/aktifkan |
-| Top-up saldo | Pemilihan kartu, nominal, tinjau dan konfirmasi simulasi |
-| Sesi parkir | Daftar sesi aktif/selesai dan filter |
-| Transaksi | Saldo sebelum/sesudah serta pencarian/filter jenis |
-| Perangkat | Data perangkat contoh dan pemilihan mode reader |
-| Pengaturan | Tarif, batas top-up dan durasi buka contoh |
+| Halaman         | Isi                                                      |
+| --------------- | -------------------------------------------------------- |
+| Ringkasan       | Statistik, aktivitas terbaru, mode reader                |
+| Kartu & pemilik | Cari/filter, tambah kartu contoh, blokir/aktifkan        |
+| Top-up saldo    | Pemilihan kartu, nominal, tinjau dan konfirmasi simulasi |
+| Sesi parkir     | Daftar sesi aktif/selesai dan filter                     |
+| Transaksi       | Saldo sebelum/sesudah serta pencarian/filter jenis       |
+| Perangkat       | Data perangkat contoh dan pemilihan mode reader          |
+| Pengaturan      | Tarif, batas top-up dan durasi buka contoh               |
 
 Mulai dari [panduan handoff UI](docs/UI_HANDOFF.md) untuk melanjutkan pekerjaan. Semua perubahan di tahap ini berfokus pada frontend.
 
