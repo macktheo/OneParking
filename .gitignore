@@ -1,0 +1,14 @@
+# Dependencies and generated output
+node_modules/
+dist/
+.vite/
+coverage/
+*.log
+
+# Local credentials and editor files
+.env
+.env.*
+!.env.example
+config.h
+.DS_Store
+Thumbs.db
