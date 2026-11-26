@@ -1,41 +1,19 @@
-# OneParking — Admin web sederhana
+# OneParking web UI
 
-Frontend mandiri untuk mengerjakan UI admin. Tidak memerlukan Laravel, PHP, login server, database, migration atau ESP.
+Frontend Vue 3 + Vue Router + Vite, berisi login demo, sembilan halaman admin, Digital Gate Display, serta 403/404. Semua data contoh; tidak membutuhkan database atau backend.
 
-```powershell
-cd OneParking\admin-web
-npm.cmd ci
-npm.cmd run dev
+```bash
+cd admin-web
+npm ci
+npm run dev
 ```
 
-Buka URL lokal yang ditampilkan Vite, biasanya `http://127.0.0.1:5173`.
+Akun contoh: `admin@oneparking.test` / `demo12345`. Bukan akun nyata. Reload mereset sesi dan data RAM.
 
-## Halaman
+Build: `npm run build`. Preview: `npm run preview`. Pada Windows PowerShell boleh memakai `npm.cmd`.
 
-- Ringkasan: statistik, aktivitas terbaru, mode reader.
-- Kartu & pemilik: cari/filter, tambah kartu contoh, blokir/aktifkan.
-- Top-up: pilih kartu, nominal, tinjau dan konfirmasi simulasi.
-- Sesi parkir: daftar sesi aktif/selesai dan filter status.
-- Transaksi: riwayat beserta saldo sebelum/sesudah, cari/filter jenis.
-- Perangkat: tampilan perangkat dan pilihan mode contoh.
-- Pengaturan: tarif, batas top-up, durasi buka untuk simulasi.
+Peta file dan instruksi tim ada di [README utama](../README.md), [UI_SITEMAP](../docs/UI_SITEMAP.md), dan [UI_HANDOFF](../docs/UI_HANDOFF.md).
 
-Semua data ada di memori browser dan kembali ke awal saat reload. Tidak ada fetch, API request, localStorage, autentikasi nyata, atau kendali hardware. Label pratinjau menjelaskan bahwa semua data contoh. Backend/database yang sudah ada tetap terpisah.
+Halaman utama: `src/pages/`; shell: `src/layouts/`; komponen: `src/components/`; route: `src/router/`; logika contoh: `src/stores/`; data: `src/mocks/`; gaya: `src/styles/`.
 
-## File yang dikerjakan
-
-| File            | Kegunaan                                      |
-| --------------- | --------------------------------------------- |
-| `src/App.vue`   | Halaman, form, navigasi, dan interaksi contoh |
-| `src/style.css` | Tampilan sederhana, layout laptop dan HP      |
-| `src/data.js`   | Data kartu, sesi dan transaksi contoh         |
-| `src/main.js`   | Entry Vue                                     |
-
-Untuk mengubah isi data, edit `src/data.js`. Untuk mengubah warna/jarak/layout, edit `src/style.css`. Untuk mengubah form dan halaman, edit `src/App.vue`.
-
-```powershell
-npm.cmd run build
-npm.cmd run preview
-```
-
-Folder `dist/` dihasilkan oleh build dan bisa disajikan sebagai website statis. Tidak perlu menjalankan perintah artisan, mengisi backend/.env, atau menyalakan database untuk mengerjakan UI ini.
+Gunakan fallback SPA ke `index.html` saat hosting. Frontend ini tidak menjalankan polling, sesi server, otorisasi produksi, pembayaran nyata, ataupun kendali hardware.

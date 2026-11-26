@@ -1,68 +1,76 @@
-# OneParking — Acuan UI Admin
+# OneParking — Struktur UI Website
 
-Frontend sederhana untuk sistem parkir kampus CampusPay. Repositori ini menjadi acuan tampilan dan struktur kerja UI untuk tim.
+Acuan lengkap antarmuka CampusPay/OneParking untuk dibagi dan dilanjutkan oleh tim. Tampilannya sederhana: sidebar, kartu ringkasan, tabel dan form, dengan layout laptop/HP.
 
-**Status:** pratinjau frontend dengan data contoh. Belum terhubung ke backend, database, RFID, atau servo. Perubahan data hanya berlaku dalam memori browser dan kembali ke awal saat reload.
+**Branch:** `UI-Struktur-OneParking`. Git tidak mendukung spasi pada nama branch, jadi nama “UI Struktur OneParking” ditulis memakai tanda hubung.
 
-## Menjalankan proyek
+**Batas:** seluruh data dan login adalah simulasi di memori browser. Tidak ada database, API, backend, token perangkat, atau kendali palang nyata. Reload mengembalikan data dan sesi demo. Jangan memakai akun contoh sebagai autentikasi produksi.
 
-Prasyarat: Git dan Node.js yang didukung Vite 6 (Node 22 LTS atau lebih baru disarankan).
+## Jalankan
 
 ```bash
-git clone https://github.com/macktheo/OneParking.git
-cd OneParking
-git switch codex/admin-ui-reference
-cd admin-web
+git clone --branch UI-Struktur-OneParking https://github.com/macktheo/OneParking.git
+cd OneParking/admin-web
 npm ci
 npm run dev
 ```
 
-Di Windows PowerShell, gunakan `npm.cmd` jika `npm.ps1` diblokir. Buka alamat lokal yang ditampilkan Vite, biasanya http://127.0.0.1:5173. Tidak perlu menjalankan Laravel atau database.
+Di PowerShell gunakan `npm.cmd` bila `npm.ps1` diblokir. Buka URL Vite, biasanya `http://127.0.0.1:5173`.
+
+Login contoh: **admin@oneparking.test** / **demo12345**. Ini bukan kredensial nyata dan tidak dikirim ke server.
 
 ```bash
 npm run build
 npm run preview
 ```
 
-## Struktur
+## Seluruh halaman
+
+| Area    | Route                  | Acuan                                                                    |
+| ------- | ---------------------- | ------------------------------------------------------------------------ |
+| Login   | `/login`               | Form email/password, lihat password, loading, login gagal, sesi demo     |
+| Admin   | `/admin/dashboard`     | Statistik dan aktivitas terkini                                          |
+| Admin   | `/admin/users`         | Pemilik, pencarian, edit nama/NIM/kendaraan                              |
+| Admin   | `/admin/cards`         | Registrasi contoh, daftar UID, pencarian/filter, konfirmasi blokir/aktif |
+| Admin   | `/admin/topup`         | Pilih kartu, nominal, tinjau, konfirmasi dan hasil simulasi              |
+| Admin   | `/admin/parking`       | Sesi aktif/selesai dan snapshot tarif contoh                             |
+| Admin   | `/admin/transactions`  | Ledger contoh, saldo awal/akhir, pencarian/filter jenis/tanggal          |
+| Admin   | `/admin/devices`       | Mode REGISTER/TOPUP/ENTRY/EXIT dan status contoh                         |
+| Admin   | `/admin/security-logs` | Audit, pencarian dan filter hasil                                        |
+| Admin   | `/admin/settings`      | Tarif, durasi dan batas top-up                                           |
+| Display | `/display`             | Layar gerbang fullscreen dan seluruh skenario hasil PRD                  |
+| Sistem  | `/forbidden`           | Halaman contoh 403                                                       |
+| Sistem  | Route tidak dikenal    | Halaman 404                                                              |
+
+Setiap halaman admin menyediakan kontrol **Tampilan pratinjau** untuk melihat normal/loading/kosong/error/offline. Digital display memiliki pemilih skenario; hasil sementara kembali standby setelah 5 detik.
+
+## Struktur kerja
 
 ```text
-OneParking/
-├── README.md
-├── docs/
-│   └── UI_HANDOFF.md       # peta UI dan panduan melanjutkan pekerjaan
-└── admin-web/
-    ├── README.md
-    ├── package.json
-    ├── package-lock.json
-    ├── index.html
-    ├── vite.config.js
-    └── src/
-        ├── main.js        # entry Vue
-        ├── App.vue        # halaman, navigasi, form dan interaksi contoh
-        ├── style.css      # layout responsif dan tampilan
-        └── data.js        # kartu, transaksi dan sesi contoh
+admin-web/src/
+├── App.vue                       # root dan provider data contoh
+├── main.js                       # Vue + router
+├── router/index.js               # route dan guard sesi demo
+├── layouts/AdminLayout.vue       # layout seluruh halaman admin
+├── components/                   # sidebar, header, stat, badge, notice, state, dialog
+├── pages/
+│   ├── auth/LoginPage.vue
+│   ├── admin/                    # sembilan halaman admin terpisah
+│   ├── display/GateDisplayPage.vue
+│   └── system/                   # 403 dan 404
+├── stores/                       # data/interaksi demo dan sesi RAM
+├── mocks/                        # fixture kartu, transaksi dan state display
+└── styles/base.css               # gaya bersama dan responsif
 ```
 
-## Halaman yang tersedia
+Mulai dari [peta UI dan state](docs/UI_SITEMAP.md), lalu [panduan handoff dan pembagian kerja](docs/UI_HANDOFF.md). [Hasil verifikasi](docs/UI_VERIFICATION.md) menjelaskan yang sudah diuji dan batasnya.
 
-| Halaman         | Isi                                                      |
-| --------------- | -------------------------------------------------------- |
-| Ringkasan       | Statistik, aktivitas terbaru, mode reader                |
-| Kartu & pemilik | Cari/filter, tambah kartu contoh, blokir/aktifkan        |
-| Top-up saldo    | Pemilihan kartu, nominal, tinjau dan konfirmasi simulasi |
-| Sesi parkir     | Daftar sesi aktif/selesai dan filter                     |
-| Transaksi       | Saldo sebelum/sesudah serta pencarian/filter jenis       |
-| Perangkat       | Data perangkat contoh dan pemilihan mode reader          |
-| Pengaturan      | Tarif, batas top-up dan durasi buka contoh               |
+Tidak ada portal mahasiswa/pemegang kartu, payment gateway, kamera, atau aplikasi mobile karena berada di luar baseline MVP PRD. Pemegang kartu memakai Digital Gate Display; akun non-admin direpresentasikan melalui halaman contoh 403.
 
-Mulai dari [panduan handoff UI](docs/UI_HANDOFF.md) untuk melanjutkan pekerjaan. Semua perubahan di tahap ini berfokus pada frontend.
+Untuk hosting statis, konfigurasi fallback semua route SPA ke `index.html`; Vue Router menggunakan history mode. Backend/proyek lain dalam laptop tidak diubah oleh branch UI ini.
 
-## Verifikasi acuan
+## Pratinjau
 
-- Production build berhasil.
-- Interaksi utama telah diperiksa di browser: navigasi, pencarian/filter, tambah/blokir kartu, tinjau/konfirmasi top-up, riwayat transaksi, mode dan pengaturan.
-- Tampilan desktop dan HP diperiksa, termasuk overflow halaman.
-- Tidak ada request API/backend dari UI ini.
+![Dashboard admin](docs/screenshots/dashboard.png)
 
-Pengujian di atas adalah pemeriksaan lokal pada versi acuan, bukan CI otomatis. Login admin, integrasi transaksi nyata dan pengujian hardware belum termasuk dalam frontend ini.
+![Digital Gate Display](docs/screenshots/display.png)
