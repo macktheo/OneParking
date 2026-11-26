@@ -1,0 +1,28 @@
+
+  ..............................
+
+  Tests:    30 passed (155 assertions)
+  Duration: 5.79s
+
+Isolated MySQL QA database and certificate-verified HTTPS runtime ready on localhost:8444.
+PASS: HTTPS valid CA and hostname
+PASS: Invalid CA and hostname rejected (TC27 software client)
+PASS: Real HTTPS login, guest401, viewer403 and authenticated CSRF419
+PASS: RFID registration, leading zero and duplicate rejection (TC04 software)
+PASS: Scan confirmation bound to login session, including same admin
+PASS: 10 concurrent MySQL top-ups + retry credit exactly once (TC12)
+PASS: Invalid amounts and direct balance edits rejected (TC10/11)
+PASS: 10 concurrent ENTRY retries, one session/command, reconciliation and ACK (TC13/14/20)
+PASS: 10 concurrent EXIT + 10 retries: one debit and old tariff snapshot (TC18/29)
+PASS: Unknown/blocked card rejection (TC05)
+PASS: Insufficient balance keeps active session and gate denied (TC17)
+PASS: Stale mode/time and invalid device token rejected (TC21/22/24)
+PASS: Sanitized live display, rejected history, CSV and audit (TC26)
+PASS: 20 TLS LAN-loopback scan latency samples (NFR01 software)
+PASS: All QA card balances reconcile with ledger (TC30)
+PASS: Logout invalidates session (TC06)
+PASS: phpMyAdmin interface available on loopback8086
+API/TLS/parallel suite complete: 17 checks passed. Physical ESP/RFID/servo not tested.
+Live display updated after scan in 2086ms
+PASS: UI/UX live Laravel login, nine admin pages, holder/card registration from device scan, block/unblock confirmation, server top-up, filters, mode, automatic private display and reset, mobile sidebar/layout, logout; no Vue runtime errors.
+PASS: automated backend, MySQL parallel, TLS, API and UI checks. Physical hardware still requires manual testing.

@@ -1,0 +1,50 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "OneParking: start HTTPS + database",
+      "type": "shell",
+      "command": "python -X utf8 scripts/run_local.py",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "OneParking: full QA isolated",
+      "type": "shell",
+      "command": "python -X utf8 scripts/qa/run_all.py",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "OneParking: backend tests",
+      "type": "shell",
+      "command": "php artisan test --compact",
+      "options": {
+        "cwd": "${workspaceFolder}/backend"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "OneParking: frontend build",
+      "type": "shell",
+      "command": "npm.cmd run build",
+      "options": {
+        "cwd": "${workspaceFolder}/backend"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "OneParking: firmware Verify",
+      "type": "shell",
+      "command": "arduino-cli compile --fqbn esp8266:esp8266:nodemcuv2 firmware/OneParking",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    }
+  ]
+}
