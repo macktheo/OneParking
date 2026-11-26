@@ -1,14 +1,39 @@
-# Dependencies and generated output
-node_modules/
-dist/
-.vite/
-coverage/
-*.log
+/backend/vendor/
+/backend/node_modules/
+/backend/.env
+/backend/database/*.sqlite*
+/backend/storage/logs/*
+/backend/public/build/
+/firmware/OneParking/config.h
+/infra/certs/
+/work/
 
-# Local credentials and editor files
-.env
-.env.*
-!.env.example
-config.h
-.DS_Store
-Thumbs.db
+**/secrets.h
+**/.env
+**/.env.*
+!**/.env.example
+/infra/bin/
+/infra/mysql-data/
+/outputs/private/
+
+# Local dependencies, runtime cache and firmware build artifacts
+**/node_modules/
+**/vendor/
+**/dist/
+**/.vite/
+**/.pio/
+**/.phpunit.cache/
+**/.phpunit.result.cache
+**/auth.json
+/backend/bootstrap/cache/*.php
+/backend/storage/framework/**
+!/backend/storage/framework/**/
+!/backend/storage/framework/**/.gitignore
+/backend/public/hot
+/backend/public/storage
+*.log
+*.elf
+*.bin
+*.hex
+*.map
+*.o

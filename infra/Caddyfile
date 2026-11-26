@@ -1,0 +1,6 @@
+# Opsional: alternatif proxy Python. Jangan menjalankan dua proxy pada port8443 bersamaan.
+# Sesuaikan IP dengan infra/network.json dan sertifikat hasil init_local.py.
+https://192.168.1.25:8443 {
+ tls D:/OneParking/infra/certs/server.pem D:/OneParking/infra/certs/server-key.pem
+ reverse_proxy 127.0.0.1:8000
+}
